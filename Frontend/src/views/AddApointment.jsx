@@ -6,7 +6,7 @@ import img_back from '../imgs/previous.png'
 
 function AddApointment() {
 
-  // const [options, setOptions] = useState(0);
+  // const [stateOptions, setStateOptions] = useState('');
   // const [status, setStatus] = useState(false);
 
   const sujet = useRef('');
@@ -14,8 +14,9 @@ function AddApointment() {
 
   const formData = new FormData;
 
-  const HandleSubmit = ()=>{
-    // e.preventDefault();
+  const HandleSubmit = (e)=>{
+    e.preventDefault();
+    
     formData.append('code', localStorage.getItem('myCode'));
     formData.append('sujet', sujet.current.value);
     formData.append('date', date.current.value);
@@ -29,18 +30,43 @@ function AddApointment() {
     })
   }
 
-  const check = ()=>{
+  const myFormData = new FormData();
+  const check = () => {
+    myFormData.append('datee', date.current.value)
 
+    axios.post('http://localhost/brief6/Backend/reservation/checkAva', myFormData)
+      .then(function (response) {
+        let myData = response.data;
+        const option = document.getElementsByClassName('option');
+        if(myData)
+        { 
+          for(let i = 0; i < option.length; i++) {
+            for(let j = 0; j < myData.length; j++) {
+              if(myData[j].creneau == option[i].value)
+              {
+               option[i].disabled = true;
+              }
+            }
+          }
+        } else {
+          for(let i = 0; i < option.length; i++) {
+            option[i].disabled = false;
+          }
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
+  // const secondFormData = new FormData;
   // const dateOnChange = ()=>{
-  //   const secondFormData = new FormData;
   //   secondFormData.append('date', date.current.value);
 
   //   axios.post('http://localhost/brief6/Backend/reservation/selectAllCreneau', secondFormData)
   //   .then(function(response){
   //     const options = response.data;
-  //     setOptions(options);
+  //     // setStateOptions(options);
   //     // console.log(options);
   //   })
   //   .catch(function(error){
@@ -77,6 +103,7 @@ function AddApointment() {
   // console.log(minDate);
 
   // console.log(localStorage.getItem('code'));
+
   return (
     <div>
       <Link to='/Rendezvous'><img src={img_back} width='45' className='img_back'/></Link>
@@ -96,7 +123,7 @@ function AddApointment() {
                 {creneaux.map((cren, index) =>{
                   cren === true ? status(true) : status(false)
                   return(
-                    <option key={index} disabled={status(i) ? true : false}>{cren}</option>
+                    <option className='option' key={index} disabled={status(i) ? true : false}>{cren}</option>
                   )
                 })}
             </select>

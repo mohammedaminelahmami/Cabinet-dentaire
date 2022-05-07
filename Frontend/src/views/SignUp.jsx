@@ -11,6 +11,7 @@ function SignUp() {
   let prenom = useRef('');
   let email = useRef('');
   let age = useRef('');
+  let Code = useRef('');
 
   let formData = new FormData;
 
@@ -27,14 +28,12 @@ function SignUp() {
     .then(function(response){
       let codeData = response.data.code;
       localStorage.setItem("code" ,codeData);
-      // console.log(codeData);
+      console.log(codeData);
     })
     .catch(function(error){
       console.log(error);
     })
   }
-
-  let Code = useRef('');
 
   function copyText(entryText){
     navigator.clipboard.writeText(entryText);
