@@ -5,7 +5,7 @@ import img_back from '../imgs/previous.png'
 function Precedent() {
   return (
     <div>
-        <Link to='/'><img src={img_back} width='45' className='img_back'/></Link>
+        <Link to='/'><div><img src={img_back} width='25' className='img_back'/></div></Link>
     </div>
   )
 }

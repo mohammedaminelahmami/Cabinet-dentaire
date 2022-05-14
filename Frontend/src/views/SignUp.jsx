@@ -11,44 +11,44 @@ function SignUp() {
   let prenom = useRef('');
   let email = useRef('');
   let age = useRef('');
+  let Code = useRef('');
 
-  let formData = new FormData;
-
-  const HandleClick = ()=>{
+  const HandleSubmit = ()=>{
     // e.preventDefault();
-    
-    formData.append('nom', nom.current.value);
-    formData.append('prenom', prenom.current.value);
-    formData.append('email', email.current.value);
-    formData.append('age', age.current.value);
+    let formData = new FormData();
+    formData.append('nom', nom.current.value)
+    formData.append('prenom', prenom.current.value)
+    formData.append('email', email.current.value)
+    formData.append('age', age.current.value)
 
     // signUp & get Code
     axios.post('http://localhost/brief6/Backend/user/register', formData)
     .then(function(response){
-      let codeData = response.data.code;
-      localStorage.setItem("code" ,codeData);
-      // console.log(codeData);
+      let codeData = response.data.code
+      if(codeData)
+      {
+        localStorage.setItem("code" ,response.data.code)
+        console.log(codeData)
+      }
     })
     .catch(function(error){
-      console.log(error);
+      console.log(error)
     })
   }
 
-  let Code = useRef('');
-
   function copyText(entryText){
-    navigator.clipboard.writeText(entryText);
+    navigator.clipboard.writeText(entryText)
   }
 
   return (
     <div className='parentSignUp'>
       <Precedent />
       <form onSubmit={()=>{copyText(Code.current.value)}} className='CodeCopy'>
-        <TextField className='form__input' label='Code' variant='filled' inputRef={Code} disabled value={localStorage.getItem("code")}></TextField>
+        <TextField className='form__input' label='Code' variant='filled' inputRef={Code} disabled value={localStorage.getItem("code") ? localStorage.getItem("code") : ''}></TextField>
         <Button type='submit'>Copy</Button>
       </form>
 
-      <form onSubmit={HandleClick} className='form'>
+      <form onSubmit={HandleSubmit} className='form'>
         <TextField className='form__input' label='nom' variant='filled' type='name' inputRef={nom} required></TextField>
         <TextField className='form__input' label='prenom' variant='filled' type='name' inputRef={prenom} required></TextField>
         <TextField className='form__input' label='email' variant='filled' type='email' inputRef={email} required></TextField>

@@ -11,16 +11,10 @@ import { useState } from 'react';
 
 function App() {
 
-  // let [count, setCount] = useState(0);
-  // const handleClick = ()=>{
-  //   return setCount(count + 1);
-  // }
-
   return (
 
     <Router>
       <div>
-      {/* <Button onClick={handleClick} variant='contained' color='primary'>{count}</Button> */}
         <Switch>
           
           <Route exact path='/'>
@@ -44,7 +38,6 @@ function App() {
           </Route>
 
         </Switch>
-          {/* <Footer /> */}
       </div>
     </Router>
   );
