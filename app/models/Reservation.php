@@ -1,5 +1,4 @@
 <?php
-// ba9ili loop 3la les creneaux kol maybda osbo3 jdid
     class Reservation {
         private $db;
 
@@ -48,27 +47,4 @@
                 return false;
             }
         }
-        
-        // public function insertCreneau($creneau, $date)
-        // {
-        //     $this->db->query("INSERT INTO cabinet_dentaire . creneau (creneau, date) VALUES (:creneau, :date)");
-
-        //     // Bind values
-        //     $this->db->bind(':creneau', $creneau);
-        //     $this->db->bind(':date', $date);
-
-        //     return $this->db->execute();
-        // }
-
-        // public function dateVerif($date)
-        // {
-        //     $this->db->query("SELECT * FROM cabinet_dentaire . creneau WHERE date = '$date' ");
-        //     if($this->db->single())
-        //     {
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }        
-        // }
-
     }

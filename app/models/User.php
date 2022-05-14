@@ -43,5 +43,4 @@
                 echo json_encode('False');
             }
         }
-
     }
