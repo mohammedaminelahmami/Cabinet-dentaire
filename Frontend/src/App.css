@@ -115,6 +115,17 @@ body{
   align-self: center;
 }
 
+.title{
+  font-size: large;
+  font-weight: 600;
+  color: #115aa4;
+}
+
+.sujet{
+  font-size: medium;
+  font-weight: 600;
+}
+
 footer{
   margin-top: 6.5rem;
 }

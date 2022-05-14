@@ -6,45 +6,51 @@ import img_back from '../imgs/previous.png'
 
 function AddApointment() {
 
-  // const [stateOptions, setStateOptions] = useState('');
-  // const [status, setStatus] = useState(false);
-
   const sujet = useRef('');
   const date = useRef('');
+  let currentCren;
 
-  const formData = new FormData;
+  const HandleSubmit = ()=>{
+    const formData = new FormData();
 
-  const HandleSubmit = (e)=>{
-    e.preventDefault();
-    
-    formData.append('code', localStorage.getItem('myCode'));
-    formData.append('sujet', sujet.current.value);
-    formData.append('date', date.current.value);
+    formData.append('code', localStorage.getItem('myCode'))
+    formData.append('sujet', sujet.current.value)
+    formData.append('date', date.current.value)
+    formData.append('creneau', currentCren)
 
     axios.post('http://localhost/brief6/Backend/reservation/rendezvous', formData)
     .then(function(response){
-      console.log(response);
+      console.log(response)
     })
     .catch(function(error){
-      console.log(error);
+      console.log(error)
     })
   }
 
-  const myFormData = new FormData();
-  const check = () => {
+  const handleOnChange = (event) => {
+    // console.log(event.target.value);
+    currentCren = event.target.value;
+  }
+
+  const handleOnchangeCheck = () => {
+    const myFormData = new FormData();
     myFormData.append('datee', date.current.value)
 
     axios.post('http://localhost/brief6/Backend/reservation/checkAva', myFormData)
       .then(function (response) {
-        let myData = response.data;
-        const option = document.getElementsByClassName('option');
+
+        // dates from databse
+        let myData = response.data
+        const option = document.getElementsByClassName('option')
         if(myData)
         { 
           for(let i = 0; i < option.length; i++) {
             for(let j = 0; j < myData.length; j++) {
               if(myData[j].creneau == option[i].value)
               {
-               option[i].disabled = true;
+                option[i].disabled = true;
+              } else {
+                option[i].disabled = false;
               }
             }
           }
@@ -58,21 +64,6 @@ function AddApointment() {
         console.log(error);
       })
   }
-
-  // const secondFormData = new FormData;
-  // const dateOnChange = ()=>{
-  //   secondFormData.append('date', date.current.value);
-
-  //   axios.post('http://localhost/brief6/Backend/reservation/selectAllCreneau', secondFormData)
-  //   .then(function(response){
-  //     const options = response.data;
-  //     // setStateOptions(options);
-  //     // console.log(options);
-  //   })
-  //   .catch(function(error){
-  //     console.log(error);
-  //   })
-  // }
 
   let today = new Date();
   let dd = today.getDate();
@@ -99,35 +90,29 @@ function AddApointment() {
   let i;
 
   let creneaux = ['9 - 10', '10 - 11', '11 - 12', '14 - 15', '15 - 16', '16 - 17'];
-  // console.log(maxDate);
-  // console.log(minDate);
-
-  // console.log(localStorage.getItem('code'));
 
   return (
     <div>
       <Link to='/Rendezvous'><img src={img_back} width='45' className='img_back'/></Link>
       <div className='form__add'>
         <form onSubmit={HandleSubmit} className='form'>
-
           <div style={{marginLeft:30}}>
             <label>Date </label>
-            <input onChange={check} type='date' min={minDate} max={maxDate} ref={date} style={{width:300, padding:6}}/>
+            <input onChange={handleOnchangeCheck} type='date' min={minDate} max={maxDate} ref={date} style={{width:300, padding:6}} required/>
           </div>
 
           <div>
             <label>Creneau </label>
 
-            <select style={{width:300, padding:6}}>
+            <select style={{width:300, padding:6}} onChange={handleOnChange} required>
               <option>Select Time</option>
                 {creneaux.map((cren, index) =>{
                   cren === true ? status(true) : status(false)
                   return(
-                    <option className='option' key={index} disabled={status(i) ? true : false}>{cren}</option>
+                    <option className='option' value={cren} key={index} >{cren}</option>
                   )
                 })}
             </select>
-
           </div>
 
           <TextField
