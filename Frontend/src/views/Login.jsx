@@ -18,7 +18,7 @@ function Login() {
     
     formData.append('code', codeField.current.value)
     
-    axios.post('http://localhost/brief6/Backend/user/login', formData)
+    axios.post('http://localhost/brief6/user/login', formData)
     .then(function(response){
       let data = response.data;
       if(data === "True")
@@ -41,7 +41,7 @@ function Login() {
       {content && <Rendezvous />}
       {!content&&
         <div>
-          <Precedent />
+          <Precedent pagePre='/' />
           <form onSubmit={HandleSubmit} className='btn__Code'>
             <TextField 
               className='form__input' 

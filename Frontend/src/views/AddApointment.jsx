@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material'
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import img_back from '../imgs/previous.png'
+import Precedent from '../components/Precedent';
 
 function AddApointment() {
 
@@ -18,7 +18,7 @@ function AddApointment() {
     formData.append('date', date.current.value)
     formData.append('creneau', currentCren)
 
-    axios.post('http://localhost/brief6/Backend/reservation/rendezvous', formData)
+    axios.post('http://localhost/brief6/reservation/rendezvous', formData)
     .then(function(response){
       console.log(response)
     })
@@ -36,7 +36,7 @@ function AddApointment() {
     const myFormData = new FormData();
     myFormData.append('datee', date.current.value)
 
-    axios.post('http://localhost/brief6/Backend/reservation/checkAva', myFormData)
+    axios.post('http://localhost/brief6/reservation/checkAva', myFormData)
       .then(function (response) {
 
         // dates from databse
@@ -93,7 +93,7 @@ function AddApointment() {
 
   return (
     <div>
-      <Link to='/Rendezvous'><img src={img_back} width='45' className='img_back'/></Link>
+      <Precedent pagePre='/rendezvous' />
       <div className='form__add'>
         <form onSubmit={HandleSubmit} className='form'>
           <div style={{marginLeft:30}}>
