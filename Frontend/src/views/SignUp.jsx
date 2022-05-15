@@ -22,7 +22,7 @@ function SignUp() {
     formData.append('age', age.current.value)
 
     // signUp & get Code
-    axios.post('http://localhost/brief6/Backend/user/register', formData)
+    axios.post('http://localhost/brief6/user/register', formData)
     .then(function(response){
       let codeData = response.data.code
       if(codeData)

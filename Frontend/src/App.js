@@ -6,10 +6,20 @@ import Login from './views/Login';
 import SignUp from './views/SignUp';
 import Rendezvous from './views/Rendezvous';
 import AddApointment from './views/AddApointment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import GetAppointments from './views/GetAppointments';
 // import Footer from './components/Footer';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(()=>{
+    if(localStorage.getItem('myCode'))
+    {
+      setLoggedIn(true)
+    }
+  }, [])
 
   return (
 
@@ -18,11 +28,19 @@ function App() {
         <Switch>
           
           <Route exact path='/'>
-            <Home />
+            {loggedIn ?
+              <Rendezvous />
+              :
+              <Home />
+            }
           </Route>
 
           <Route path='/Login'>
-            <Login />
+            {loggedIn ?
+              <Rendezvous />
+              :
+              <Login />
+            }
           </Route>
 
           <Route path='/SignUp'>
@@ -35,6 +53,10 @@ function App() {
 
           <Route path='/AddApointment'>
             <AddApointment />
+          </Route>
+
+          <Route to='/getAppointments'>
+            <GetAppointments />
           </Route>
 
         </Switch>
