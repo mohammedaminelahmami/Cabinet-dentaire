@@ -31,7 +31,7 @@ function GetAppointments() {
             {data.map((dat, index)=>{
                 return(
                 <div key={index}>
-                    <CardRend className='cardRend' creneau={dat.creneau} sujet={dat.sujet} date={dat.date} />
+                    <CardRend className='cardRend' creneau={dat.creneau} sujet={dat.sujet} date={dat.date} idReserve={dat.idReserve} />
                 </div>
                 )
             })

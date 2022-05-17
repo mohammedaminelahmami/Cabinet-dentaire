@@ -44,27 +44,15 @@
 
         public function cancelCreneau()
         {
-            
+            $idReserve = $_POST['idReserve'];
+            return $this->ReservationModel->deleteCreneau($idReserve);
         }
 
-        // public function insertCreneaux()
-        // {
-        //     $creneaux = array('9 - 10', '10 - 11', '11 - 12', '14 - 15', '15 - 16', '16 - 17');
-
-        //     for($i = 0; $i < 7; $i++)
-        //     {
-        //         for($j = 0; $j < count($creneaux); $j++)
-        //         {
-        //             $d = date('d') + $i;
-        //             $date = date('Y-m-'.$d);
-
-        //             if($this->ReservationModel->dateVerif($date))
-        //             {
-        //                 // Deja exist :)
-        //             }else{
-        //                 $this->ReservationModel->insertCreneau($creneaux[$j], $date);
-        //             }
-        //         }
-        //     }
-        // }
+        public function modifierSujet()
+        {
+            $code = $_POST['code'];
+            $idReserve = $_POST['idReserve'];
+            $sujet = $_POST['sujet'];
+            return $this->ReservationModel->updateSujet($code,$idReserve, $sujet);
+        }
     }
