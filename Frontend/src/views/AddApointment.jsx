@@ -49,8 +49,6 @@ function AddApointment() {
               if(myData[j].creneau == option[i].value)
               {
                 option[i].disabled = true;
-              } else {
-                option[i].disabled = false;
               }
             }
           }

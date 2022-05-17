@@ -5,16 +5,7 @@ import logout from '../imgs/logout.png'
 import { Button } from '@mui/material'
 
 function Precedent(props) {
-
-  const [loggedIn, setLoggedIn] = useState(false)
-
-  useEffect(()=>{
-    if(localStorage.getItem('myCode'))
-    {
-      setLoggedIn(true)
-    }
-  }, [])
-
+  
   const HandleClick = ()=>{
     window.location.replace('http://localhost:3000/')
     localStorage.removeItem('myCode')
