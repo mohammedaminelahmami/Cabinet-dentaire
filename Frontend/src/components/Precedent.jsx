@@ -5,16 +5,33 @@ import logout from '../imgs/logout.png'
 import { Button } from '@mui/material'
 
 function Precedent(props) {
-  
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(()=>{
+    if(localStorage.getItem('myCode'))
+    {
+      setLoggedIn(true)
+    }
+  }, [])
+
   const HandleClick = ()=>{
     window.location.replace('http://localhost:3000/')
     localStorage.removeItem('myCode')
   }
 
   return (
-    <div>
-        <Link to={props.pagePre}><div><img src={img_back} width='25' className='img_back'/></div></Link>
-        <Button onClick={HandleClick} style={{marginLeft:"4rem"}}><img src={logout} width='30' /></Button>
+    <div className='precedent_logout'>
+      <Link to={props.pagePre} className='div_title' style={{marginBottom:"2.5rem"}}>
+        <div><img src={img_back} width='25' className='img_back'/></div>
+        <p className='title_log_pre'>Précedent</p>
+      </Link>
+
+      {loggedIn&&
+        <Button onClick={HandleClick} className='div_title' style={{marginLeft:"4rem"}}><img src={logout} width='30' />
+          <p className='title_log'>Se déconnecter</p>
+        </Button>
+      }
     </div>
   )
 }

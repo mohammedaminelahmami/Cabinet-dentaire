@@ -106,6 +106,7 @@ body{
 .parentCards{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 3rem;
   gap: 1.5rem;
 }
@@ -207,8 +208,34 @@ footer{
   padding: 2rem;
 }
 
+.div_title{
+  display: flex;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.title_log{
+  align-self: center;
+  color: rgb(222, 0, 0);
+  font-weight: 700;
+}
+
+.title_log_pre{
+  align-self: center;
+  color: #1167bc;
+  font-weight: 700;
+  margin-top: 2.3rem;
+}
+
+.precedent_logout{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-right: 5rem;
+}
+
 @media(max-width : 1200px){.imgHome{width: 35rem;}}
 @media(max-width : 1000px){.imgHome{width: 30rem;}}
 @media(max-width : 800px){.imgHome{width: 25rem;}}
 @media(max-width : 600px){.imgHome{width: 20rem;}}
-@media(max-width : 400px){.imgHome{width: 15rem;} .parentNav{margin-right: 2.5rem;}}
+@media(max-width : 400px){.imgHome{width: 15rem;} .parentNav{margin-right: 2.5rem;} .precedent_logout{margin-left: 3rem;} .undraw_choise{width: 70%;}}

@@ -44,19 +44,35 @@ function App() {
           </Route>
 
           <Route path='/SignUp'>
-            <SignUp />
+            {loggedIn ?
+              <Rendezvous />
+              :
+              <SignUp />
+            }
           </Route>
 
           <Route path='/Rendezvous'>
-            <Rendezvous />
+            {loggedIn ?
+              <Rendezvous />
+              :
+              <Home />
+            }
           </Route>
 
           <Route path='/AddApointment'>
-            <AddApointment />
+            {loggedIn ?
+              <AddApointment />
+              :
+              <Home />
+            }
           </Route>
 
           <Route to='/getAppointments'>
-            <GetAppointments />
+            {loggedIn ?
+              <GetAppointments />
+              :
+              <Home />
+            }
           </Route>
 
         </Switch>

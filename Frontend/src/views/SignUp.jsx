@@ -42,7 +42,7 @@ function SignUp() {
 
   return (
     <div className='parentSignUp'>
-      <Precedent />
+      <Precedent pagePre='/' />
       <form onSubmit={()=>{copyText(Code.current.value)}} className='CodeCopy'>
         <TextField className='form__input' label='Code' variant='filled' inputRef={Code} disabled value={localStorage.getItem("code") ? localStorage.getItem("code") : ''}></TextField>
         <Button type='submit'>Copy</Button>
