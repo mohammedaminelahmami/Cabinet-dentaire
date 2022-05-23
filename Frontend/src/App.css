@@ -106,6 +106,7 @@ body{
 .parentCards{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 3rem;
   gap: 1.5rem;
 }
@@ -207,8 +208,50 @@ footer{
   padding: 2rem;
 }
 
+.div_title{
+  display: flex;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.title_log{
+  align-self: center;
+  color: rgb(222, 0, 0);
+  font-weight: 700;
+}
+
+.title_log_pre{
+  align-self: center;
+  color: #1167bc;
+  font-weight: 700;
+  margin-top: 2.3rem;
+}
+
+.precedent_logout{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+
+.divDate{
+  display: flex;
+  margin-left: 2rem;
+}
+
+.divCreneau{
+  display: flex;
+}
+
+.getApp{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
 @media(max-width : 1200px){.imgHome{width: 35rem;}}
 @media(max-width : 1000px){.imgHome{width: 30rem;}}
-@media(max-width : 800px){.imgHome{width: 25rem;}}
-@media(max-width : 600px){.imgHome{width: 20rem;}}
-@media(max-width : 400px){.imgHome{width: 15rem;} .parentNav{margin-right: 2.5rem;}}
+@media(max-width : 800px){.imgHome{width: 25rem;} .parentNav{margin-right: 2.5rem;}}
+@media(max-width : 600px){.imgHome{width: 20rem;} .CodeCopy{width: 60%;} .form__input{width: 80%;} .btn__Code{margin-top: 7rem;}}
+@media(max-width : 533px){.undraw_choise{display: none;} .precedent_logout{flex-wrap: wrap;} .precedent_logout{margin-left: 2rem;}}
+@media(max-width : 400px){.precedent_logout{margin-left: 2.5rem;} .divDate{flex-direction:column; margin-left: 0rem} .divCreneau{flex-direction:column;}}
+@media(max-width : 360px){.precedent_logout{margin-left: 1.5rem;}}

@@ -24,10 +24,10 @@ function SignUp() {
     // signUp & get Code
     axios.post('http://localhost/brief6/user/register', formData)
     .then(function(response){
-      let codeData = response.data.code
+      let codeData = response.data
       if(codeData)
       {
-        localStorage.setItem("code" ,response.data.code)
+        localStorage.setItem("code" ,response.data)
         console.log(codeData)
       }
     })
@@ -42,7 +42,7 @@ function SignUp() {
 
   return (
     <div className='parentSignUp'>
-      <Precedent />
+      <Precedent pagePre='/' />
       <form onSubmit={()=>{copyText(Code.current.value)}} className='CodeCopy'>
         <TextField className='form__input' label='Code' variant='filled' inputRef={Code} disabled value={localStorage.getItem("code") ? localStorage.getItem("code") : ''}></TextField>
         <Button type='submit'>Copy</Button>

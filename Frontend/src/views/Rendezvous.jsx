@@ -12,7 +12,7 @@ function Rendezvous() {
       <div className='parentCards'>
         <Link to='/getAppointments' style={{textDecoration:"none", alignSelf:"center"}}><Button variant='contained' size='large'>Get Apointments</Button></Link>
         <Link to='/AddApointment' style={{textDecoration:"none", alignSelf:"center"}}><Button variant='contained' size='large' color='primary' endIcon={<DoneOutlineIcon />}>Add Apointment</Button></Link>
-        <img src={choise} width='450' style={{marginLeft:"2rem", marginTop:"3rem"}} />
+        <img src={choise} width='450' className='undraw_choise' style={{marginLeft:"2rem", marginTop:"3rem"}} />
       </div>
     </div>
   )

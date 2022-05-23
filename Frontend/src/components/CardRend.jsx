@@ -42,6 +42,7 @@ function CardRend(props) {
     .catch(function(error){
       console.log(error);
     })
+    setShowModal(false)
   }
 
   return (

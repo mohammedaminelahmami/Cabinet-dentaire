@@ -85,8 +85,6 @@ function AddApointment() {
     return ava;
   }
 
-  let i;
-
   let creneaux = ['9 - 10', '10 - 11', '11 - 12', '14 - 15', '15 - 16', '16 - 17'];
 
   return (
@@ -94,14 +92,13 @@ function AddApointment() {
       <Precedent pagePre='/rendezvous' />
       <div className='form__add'>
         <form onSubmit={HandleSubmit} className='form'>
-          <div style={{marginLeft:30}}>
+          <div className='divDate'>
             <label>Date </label>
             <input onChange={handleOnchangeCheck} type='date' min={minDate} max={maxDate} ref={date} style={{width:300, padding:6}} required/>
           </div>
 
-          <div>
+          <div className='divCreneau'>
             <label>Creneau </label>
-
             <select style={{width:300, padding:6}} onChange={handleOnChange} required>
               <option>Select Time</option>
                 {creneaux.map((cren, index) =>{

@@ -31,9 +31,15 @@
                 echo json_encode("please enter correct 'age' ");
             }
             else{
-                $this->userModel->insertUser();
+                $code = uniqid();
+                $nom = htmlspecialchars($_POST['nom']);
+                $prenom = htmlspecialchars($_POST['prenom']);
+                $email = htmlspecialchars($_POST['email']);
+                $age = htmlspecialchars($_POST['age']);
+
+                $selectCode = $this->userModel->insertUser($code, $nom, $prenom, $email, $age);
                 
-                $selectCode = $this->userModel->selectUser();
+                // $selectCode = $this->userModel->selectUser();
                 echo json_encode($selectCode);
             }
         }
@@ -45,10 +51,7 @@
             {
                 echo json_encode("Field required !");
             }
-            if(!preg_match("/^[0-9]+$/", $_POST['code']))
-            {
-                echo json_encode("please enter correct 'code' ");
-            }else
+            else
             {
                 $codeField = $_POST['code'];
                 return $this->userModel->validateCode($codeField);

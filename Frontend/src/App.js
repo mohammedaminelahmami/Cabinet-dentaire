@@ -22,11 +22,9 @@ function App() {
   }, [])
 
   return (
-
     <Router>
       <div>
         <Switch>
-          
           <Route exact path='/'>
             {loggedIn ?
               <Rendezvous />
@@ -44,7 +42,11 @@ function App() {
           </Route>
 
           <Route path='/SignUp'>
-            <SignUp />
+            {loggedIn ?
+              <Rendezvous />
+              :
+              <SignUp />
+            }
           </Route>
 
           <Route path='/Rendezvous'>
