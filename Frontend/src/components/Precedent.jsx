@@ -16,7 +16,7 @@ function Precedent(props) {
   }, [])
 
   const HandleClick = ()=>{
-    window.location.replace('http://localhost:3000/')
+    window.location.replace('http://localhost:3001/')
     localStorage.removeItem('myCode')
   }
 

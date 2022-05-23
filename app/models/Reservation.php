@@ -9,6 +9,7 @@
 
         public function selectReservation($code)
         {
+            $code = md5($code);
             $this->db->query("SELECT * FROM cabinet_dentaire . reservation
                               WHERE code = '$code'
                             ");
@@ -23,12 +24,9 @@
             echo json_encode($this->db->resultSet());
         }
 
-        public function insertRendezVous()
+        public function insertRendezVous($code, $sujet, $date, $creneau)
         {
-            $code = htmlspecialchars($_POST['code']);
-            $sujet = htmlspecialchars($_POST['sujet']);
-            $date = htmlspecialchars($_POST['date']);
-            $creneau = htmlspecialchars($_POST['creneau']);
+            $code = md5($code);
 
             $this->db->query("INSERT INTO cabinet_dentaire . reservation (code, sujet, date, creneau)
                               VALUES (:code, :sujet, :date, :creneau)
@@ -65,6 +63,7 @@
 
         public function updateSujet($code, $idReserve, $sujet)
         {
+            $code = md5($code);
             $this->db->query("UPDATE reservation
                               SET sujet = '$sujet'
                               WHERE code = '$code'

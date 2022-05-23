@@ -22,11 +22,9 @@ function App() {
   }, [])
 
   return (
-
     <Router>
       <div>
         <Switch>
-          
           <Route exact path='/'>
             {loggedIn ?
               <Rendezvous />
@@ -52,27 +50,15 @@ function App() {
           </Route>
 
           <Route path='/Rendezvous'>
-            {loggedIn ?
-              <Rendezvous />
-              :
-              <Home />
-            }
+            <Rendezvous />
           </Route>
 
           <Route path='/AddApointment'>
-            {loggedIn ?
-              <AddApointment />
-              :
-              <Home />
-            }
+            <AddApointment />
           </Route>
 
           <Route to='/getAppointments'>
-            {loggedIn ?
-              <GetAppointments />
-              :
-              <Home />
-            }
+            <GetAppointments />
           </Route>
 
         </Switch>

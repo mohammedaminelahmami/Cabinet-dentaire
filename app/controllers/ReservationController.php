@@ -14,7 +14,12 @@
             }
             else
             {
-                if($this->ReservationModel->insertRendezVous())
+                $code = htmlspecialchars($_POST['code']);
+                $sujet = htmlspecialchars($_POST['sujet']);
+                $date = htmlspecialchars($_POST['date']);
+                $creneau = htmlspecialchars($_POST['creneau']);
+
+                if($this->ReservationModel->insertRendezVous($code, $sujet, $date, $creneau))
                 {                    
                     echo json_encode("RendezVous TRUE");
                 }else{

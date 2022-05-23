@@ -24,10 +24,10 @@ function SignUp() {
     // signUp & get Code
     axios.post('http://localhost/brief6/user/register', formData)
     .then(function(response){
-      let codeData = response.data.code
+      let codeData = response.data
       if(codeData)
       {
-        localStorage.setItem("code" ,response.data.code)
+        localStorage.setItem("code" ,response.data)
         console.log(codeData)
       }
     })
